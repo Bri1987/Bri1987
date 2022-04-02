@@ -1,0 +1,1958 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <style type='text/css'>
+        html {
+            overflow-x: initial !important;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --select-text-bg-color: #B5D6FC;
+            --select-text-font-color: auto;
+            --monospace: "Lucida Console", Consolas, "Courier", monospace;
+            --title-bar-height: 20px;
+        }
+
+        .mac-os-11 {
+            --title-bar-height: 28px;
+        }
+
+        html {
+            font-size: 14px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: auto;
+            inset: 0px;
+            font-size: 1rem;
+            line-height: 1.42857;
+            overflow-x: hidden;
+            background: inherit;
+            tab-size: 4;
+        }
+
+        iframe {
+            margin: auto;
+        }
+
+        a.url {
+            word-break: break-all;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0px;
+        }
+
+        .in-text-selection,
+        ::selection {
+            text-shadow: none;
+            background: var(--select-text-bg-color);
+            color: var(--select-text-font-color);
+        }
+
+        #write {
+            margin: 0px auto;
+            height: auto;
+            width: inherit;
+            word-break: normal;
+            overflow-wrap: break-word;
+            position: relative;
+            white-space: normal;
+            overflow-x: visible;
+            padding-top: 36px;
+        }
+
+        #write.first-line-indent p {
+            text-indent: 2em;
+        }
+
+        #write.first-line-indent li p,
+        #write.first-line-indent p * {
+            text-indent: 0px;
+        }
+
+        #write.first-line-indent li {
+            margin-left: 2em;
+        }
+
+        .for-image #write {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        body.typora-export {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .typora-export .footnote-line,
+        .typora-export li,
+        .typora-export p {
+            white-space: pre-wrap;
+        }
+
+        .typora-export .task-list-item input {
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 500px) {
+            body.typora-export {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            #write {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .CodeMirror-sizer {
+                margin-left: 0px !important;
+            }
+
+            .CodeMirror-gutters {
+                display: none !important;
+            }
+        }
+
+        #write li>figure:last-child {
+            margin-bottom: 0.5rem;
+        }
+
+        #write ol,
+        #write ul {
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            vertical-align: middle;
+            image-orientation: from-image;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            color: inherit;
+            font: inherit;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            line-height: normal;
+            padding: 0px;
+        }
+
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p,
+        #write pre {
+            width: inherit;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p {
+            position: relative;
+        }
+
+        p {
+            line-height: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            break-after: avoid-page;
+            break-inside: avoid;
+            orphans: 4;
+        }
+
+        p {
+            orphans: 4;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        .md-math-block,
+        .md-rawblock,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .md-blockmeta {
+            color: rgb(204, 204, 204);
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        sup.md-footnote {
+            padding: 2px 4px;
+            background-color: rgba(238, 238, 238, 0.7);
+            color: rgb(85, 85, 85);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        sup.md-footnote a,
+        sup.md-footnote a:hover {
+            color: inherit;
+            text-transform: inherit;
+            text-decoration: inherit;
+        }
+
+        #write input[type="checkbox"] {
+            cursor: pointer;
+            width: inherit;
+            height: inherit;
+        }
+
+        figure {
+            overflow-x: auto;
+            margin: 1.2em 0px;
+            max-width: calc(100% + 16px);
+            padding: 0px;
+        }
+
+        figure>table {
+            margin: 0px;
+        }
+
+        tr {
+            break-inside: avoid;
+            break-after: auto;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            width: 100%;
+            overflow: auto;
+            break-inside: auto;
+            text-align: left;
+        }
+
+        table.md-table td {
+            min-width: 32px;
+        }
+
+        .CodeMirror-gutters {
+            border-right: 0px;
+            background-color: inherit;
+        }
+
+        .CodeMirror-linenumber {
+            user-select: none;
+        }
+
+        .CodeMirror {
+            text-align: left;
+        }
+
+        .CodeMirror-placeholder {
+            opacity: 0.3;
+        }
+
+        .CodeMirror pre {
+            padding: 0px 4px;
+        }
+
+        .CodeMirror-lines {
+            padding: 0px;
+        }
+
+        div.hr:focus {
+            cursor: none;
+        }
+
+        #write pre {
+            white-space: pre-wrap;
+        }
+
+        #write.fences-no-line-wrapping pre {
+            white-space: pre;
+        }
+
+        #write pre.ty-contain-cm {
+            white-space: normal;
+        }
+
+        .CodeMirror-gutters {
+            margin-right: 4px;
+        }
+
+        .md-fences {
+            font-size: 0.9rem;
+            display: block;
+            break-inside: avoid;
+            text-align: left;
+            overflow: visible;
+            white-space: pre;
+            background: inherit;
+            position: relative !important;
+        }
+
+        .md-fences-adv-panel {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            padding-top: 0px;
+            padding-bottom: 8px;
+            overflow-x: auto;
+        }
+
+        #write .md-fences.mock-cm {
+            white-space: pre-wrap;
+        }
+
+        .md-fences.md-fences-with-lineno {
+            padding-left: 0px;
+        }
+
+        #write.fences-no-line-wrapping .md-fences.mock-cm {
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .md-fences.mock-cm.md-fences-with-lineno {
+            padding-left: 8px;
+        }
+
+        .CodeMirror-line,
+        twitterwidget {
+            break-inside: avoid;
+        }
+
+        .footnotes {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        .footnotes+.footnotes {
+            margin-top: 0px;
+        }
+
+        .md-reset {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            outline: 0px;
+            vertical-align: top;
+            background: 0px 0px;
+            text-decoration: none;
+            text-shadow: none;
+            float: none;
+            position: static;
+            width: auto;
+            height: auto;
+            white-space: nowrap;
+            cursor: inherit;
+            -webkit-tap-highlight-color: transparent;
+            line-height: normal;
+            font-weight: 400;
+            text-align: left;
+            box-sizing: content-box;
+            direction: ltr;
+        }
+
+        li div {
+            padding-top: 0px;
+        }
+
+        blockquote {
+            margin: 1rem 0px;
+        }
+
+        li .mathjax-block,
+        li p {
+            margin: 0.5rem 0px;
+        }
+
+        li blockquote {
+            margin: 1rem 0px;
+        }
+
+        li {
+            margin: 0px;
+            position: relative;
+        }
+
+        blockquote> :last-child {
+            margin-bottom: 0px;
+        }
+
+        blockquote> :first-child,
+        li> :first-child {
+            margin-top: 0px;
+        }
+
+        .footnotes-area {
+            color: rgb(136, 136, 136);
+            margin-top: 0.714rem;
+            padding-bottom: 0.143rem;
+            white-space: normal;
+        }
+
+        #write .footnote-line {
+            white-space: pre-wrap;
+        }
+
+        @media print {
+
+            body,
+            html {
+                border: 1px solid transparent;
+                height: 99%;
+                break-after: avoid;
+                break-before: avoid;
+                font-variant-ligatures: no-common-ligatures;
+            }
+
+            #write {
+                margin-top: 0px;
+                padding-top: 0px;
+                border-color: transparent !important;
+            }
+
+            .typora-export * {
+                -webkit-print-color-adjust: exact;
+            }
+
+            .typora-export #write {
+                break-after: avoid;
+            }
+
+            .typora-export #write::after {
+                height: 0px;
+            }
+
+            .is-mac table {
+                break-inside: avoid;
+            }
+
+            .typora-export-show-outline .typora-export-sidebar {
+                display: none;
+            }
+        }
+
+        .footnote-line {
+            margin-top: 0.714em;
+            font-size: 0.7em;
+        }
+
+        a img,
+        img a {
+            cursor: pointer;
+        }
+
+        pre.md-meta-block {
+            font-size: 0.8rem;
+            min-height: 0.8rem;
+            white-space: pre-wrap;
+            background: rgb(204, 204, 204);
+            display: block;
+            overflow-x: hidden;
+        }
+
+        p>.md-image:only-child:not(.md-img-error) img,
+        p>img:only-child {
+            display: block;
+            margin: auto;
+        }
+
+        #write.first-line-indent p>.md-image:only-child:not(.md-img-error) img {
+            left: -2em;
+            position: relative;
+        }
+
+        p>.md-image:only-child {
+            display: inline-block;
+            width: 100%;
+        }
+
+        #write .MathJax_Display {
+            margin: 0.8em 0px 0px;
+        }
+
+        .md-math-block {
+            width: 100%;
+        }
+
+        .md-math-block:not(:empty)::after {
+            display: none;
+        }
+
+        .MathJax_ref {
+            fill: currentcolor;
+        }
+
+        [contenteditable="true"]:active,
+        [contenteditable="true"]:focus,
+        [contenteditable="false"]:active,
+        [contenteditable="false"]:focus {
+            outline: 0px;
+            box-shadow: none;
+        }
+
+        .md-task-list-item {
+            position: relative;
+            list-style-type: none;
+        }
+
+        .task-list-item.md-task-list-item {
+            padding-left: 0px;
+        }
+
+        .md-task-list-item>input {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin-left: -1.2em;
+            margin-top: calc(1em - 10px);
+            border: none;
+        }
+
+        .math {
+            font-size: 1rem;
+        }
+
+        .md-toc {
+            min-height: 3.58rem;
+            position: relative;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+
+        .md-toc-content {
+            position: relative;
+            margin-left: 0px;
+        }
+
+        .md-toc-content::after,
+        .md-toc::after {
+            display: none;
+        }
+
+        .md-toc-item {
+            display: block;
+            color: rgb(65, 131, 196);
+        }
+
+        .md-toc-item a {
+            text-decoration: none;
+        }
+
+        .md-toc-inner:hover {
+            text-decoration: underline;
+        }
+
+        .md-toc-inner {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .md-toc-h1 .md-toc-inner {
+            margin-left: 0px;
+            font-weight: 700;
+        }
+
+        .md-toc-h2 .md-toc-inner {
+            margin-left: 2em;
+        }
+
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 4em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 6em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 8em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 10em;
+        }
+
+        @media screen and (max-width: 48em) {
+            .md-toc-h3 .md-toc-inner {
+                margin-left: 3.5em;
+            }
+
+            .md-toc-h4 .md-toc-inner {
+                margin-left: 5em;
+            }
+
+            .md-toc-h5 .md-toc-inner {
+                margin-left: 6.5em;
+            }
+
+            .md-toc-h6 .md-toc-inner {
+                margin-left: 8em;
+            }
+        }
+
+        a.md-toc-inner {
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        .footnote-line a:not(.reversefootnote) {
+            color: inherit;
+        }
+
+        .md-attr {
+            display: none;
+        }
+
+        .md-fn-count::after {
+            content: ".";
+        }
+
+        code,
+        pre,
+        samp,
+        tt {
+            font-family: var(--monospace);
+        }
+
+        kbd {
+            margin: 0px 0.1em;
+            padding: 0.1em 0.6em;
+            font-size: 0.8em;
+            color: rgb(36, 39, 41);
+            background: rgb(255, 255, 255);
+            border: 1px solid rgb(173, 179, 185);
+            border-radius: 3px;
+            box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .md-comment {
+            color: rgb(162, 127, 3);
+            opacity: 0.6;
+            font-family: var(--monospace);
+        }
+
+        code {
+            text-align: left;
+            vertical-align: initial;
+        }
+
+        a.md-print-anchor {
+            white-space: pre !important;
+            border-width: initial !important;
+            border-style: none !important;
+            border-color: initial !important;
+            display: inline-block !important;
+            position: absolute !important;
+            width: 1px !important;
+            right: 0px !important;
+            outline: 0px !important;
+            background: 0px 0px !important;
+            text-decoration: initial !important;
+            text-shadow: initial !important;
+        }
+
+        .os-windows.monocolor-emoji .md-emoji {
+            font-family: "Segoe UI Symbol", sans-serif;
+        }
+
+        .md-diagram-panel>svg {
+            max-width: 100%;
+        }
+
+        [lang="flow"] svg,
+        [lang="mermaid"] svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        [lang="mermaid"] .node text {
+            font-size: 1rem;
+        }
+
+        table tr th {
+            border-bottom: 0px;
+        }
+
+        video {
+            max-width: 100%;
+            display: block;
+            margin: 0px auto;
+        }
+
+        iframe {
+            max-width: 100%;
+            width: 100%;
+            border: none;
+        }
+
+        .highlight td,
+        .highlight tr {
+            border: 0px;
+        }
+
+        mark {
+            background: rgb(255, 255, 0);
+            color: rgb(0, 0, 0);
+        }
+
+        .md-html-inline .md-plain,
+        .md-html-inline strong,
+        mark .md-inline-math,
+        mark strong {
+            color: inherit;
+        }
+
+        .md-expand mark .md-meta {
+            opacity: 0.3 !important;
+        }
+
+        mark .md-meta {
+            color: rgb(0, 0, 0);
+        }
+
+        @media print {
+
+            .typora-export h1,
+            .typora-export h2,
+            .typora-export h3,
+            .typora-export h4,
+            .typora-export h5,
+            .typora-export h6 {
+                break-inside: avoid;
+            }
+        }
+
+        .md-diagram-panel .messageText {
+            stroke: none !important;
+        }
+
+        .md-diagram-panel .start-state {
+            fill: var(--node-fill);
+        }
+
+        .md-diagram-panel .edgeLabel rect {
+            opacity: 1 !important;
+        }
+
+        .md-fences.md-fences-math {
+            font-size: 1em;
+        }
+
+        .md-fences-advanced:not(.md-focus) {
+            padding: 0px;
+            white-space: nowrap;
+            border: 0px;
+        }
+
+        .md-fences-advanced:not(.md-focus) {
+            background: inherit;
+        }
+
+        .typora-export-show-outline .typora-export-content {
+            max-width: 1440px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .typora-export-sidebar {
+            width: 300px;
+            font-size: 0.8rem;
+            margin-top: 80px;
+            margin-right: 18px;
+        }
+
+        .typora-export-show-outline #write {
+            --webkit-flex: 2;
+            flex: 2 1 0%;
+        }
+
+        .typora-export-sidebar .outline-content {
+            position: fixed;
+            top: 0px;
+            max-height: 100%;
+            overflow: hidden auto;
+            padding-bottom: 30px;
+            padding-top: 60px;
+            width: 300px;
+        }
+
+        @media screen and (max-width: 1024px) {
+
+            .typora-export-sidebar,
+            .typora-export-sidebar .outline-content {
+                width: 240px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .typora-export-sidebar {
+                display: none;
+            }
+        }
+
+        .outline-content li,
+        .outline-content ul {
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            list-style: none;
+        }
+
+        .outline-content ul {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .outline-content strong {
+            font-weight: 400;
+        }
+
+        .outline-expander {
+            width: 1rem;
+            height: 1.42857rem;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            cursor: pointer;
+            padding-left: 4px;
+        }
+
+        .outline-expander::before {
+            content: "";
+            position: relative;
+            font-family: Ionicons;
+            display: inline-block;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+
+        .outline-item {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            cursor: pointer;
+        }
+
+        .outline-expander:hover::before {
+            content: "";
+        }
+
+        .outline-h1>.outline-item {
+            padding-left: 0px;
+        }
+
+        .outline-h2>.outline-item {
+            padding-left: 1em;
+        }
+
+        .outline-h3>.outline-item {
+            padding-left: 2em;
+        }
+
+        .outline-h4>.outline-item {
+            padding-left: 3em;
+        }
+
+        .outline-h5>.outline-item {
+            padding-left: 4em;
+        }
+
+        .outline-h6>.outline-item {
+            padding-left: 5em;
+        }
+
+        .outline-label {
+            cursor: pointer;
+            display: table-cell;
+            vertical-align: middle;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .outline-label:hover {
+            text-decoration: underline;
+        }
+
+        .outline-item:hover {
+            border-color: rgb(245, 245, 245);
+            background-color: var(--item-hover-bg-color);
+        }
+
+        .outline-item:hover {
+            margin-left: -28px;
+            margin-right: -28px;
+            border-left: 28px solid transparent;
+            border-right: 28px solid transparent;
+        }
+
+        .outline-item-single .outline-expander::before,
+        .outline-item-single .outline-expander:hover::before {
+            display: none;
+        }
+
+        .outline-item-open>.outline-item>.outline-expander::before {
+            content: "";
+        }
+
+        .outline-children {
+            display: none;
+        }
+
+        .info-panel-tab-wrapper {
+            display: none;
+        }
+
+        .outline-item-open>.outline-children {
+            display: block;
+        }
+
+        .typora-export .outline-item {
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+        .typora-export .outline-item:hover {
+            margin-right: -8px;
+            border-right: 8px solid transparent;
+        }
+
+        .typora-export .outline-expander::before {
+            content: "+";
+            font-family: inherit;
+            top: -1px;
+        }
+
+        .typora-export .outline-expander:hover::before,
+        .typora-export .outline-item-open>.outline-item>.outline-expander::before {
+            content: "−";
+        }
+
+        .typora-export-collapse-outline .outline-children {
+            display: none;
+        }
+
+        .typora-export-collapse-outline .outline-item-open>.outline-children,
+        .typora-export-no-collapse-outline .outline-children {
+            display: block;
+        }
+
+        .typora-export-no-collapse-outline .outline-expander::before {
+            content: "" !important;
+        }
+
+        .typora-export-show-outline .outline-item-active>.outline-item .outline-label {
+            font-weight: 700;
+        }
+
+        .md-inline-math-container mjx-container {
+            zoom: 0.95;
+        }
+
+
+        :root {
+            --side-bar-bg-color: #fafafa;
+            --control-text-color: #777;
+        }
+
+        @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+        /* open-sans-regular - latin-ext_latin */
+        /* open-sans-italic - latin-ext_latin */
+        /* open-sans-700 - latin-ext_latin */
+        /* open-sans-700italic - latin-ext_latin */
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        #write {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-bottom: 100px;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            #write {
+                max-width: 1024px;
+            }
+        }
+
+        @media only screen and (min-width: 1800px) {
+            #write {
+                max-width: 1200px;
+            }
+        }
+
+        #write>ul:first-child,
+        #write>ol:first-child {
+            margin-top: 30px;
+        }
+
+        a {
+            color: #4183C4;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            position: relative;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+            cursor: text;
+        }
+
+        h1:hover a.anchor,
+        h2:hover a.anchor,
+        h3:hover a.anchor,
+        h4:hover a.anchor,
+        h5:hover a.anchor,
+        h6:hover a.anchor {
+            text-decoration: none;
+        }
+
+        h1 tt,
+        h1 code {
+            font-size: inherit;
+        }
+
+        h2 tt,
+        h2 code {
+            font-size: inherit;
+        }
+
+        h3 tt,
+        h3 code {
+            font-size: inherit;
+        }
+
+        h4 tt,
+        h4 code {
+            font-size: inherit;
+        }
+
+        h5 tt,
+        h5 code {
+            font-size: inherit;
+        }
+
+        h6 tt,
+        h6 code {
+            font-size: inherit;
+        }
+
+        h1 {
+            font-size: 2.25em;
+            line-height: 1.2;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            font-size: 1.75em;
+            line-height: 1.225;
+            border-bottom: 1px solid #eee;
+        }
+
+        /*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+        h3 {
+            font-size: 1.5em;
+            line-height: 1.43;
+        }
+
+        h4 {
+            font-size: 1.25em;
+        }
+
+        h5 {
+            font-size: 1em;
+        }
+
+        h6 {
+            font-size: 1em;
+            color: #777;
+        }
+
+        p,
+        blockquote,
+        ul,
+        ol,
+        dl,
+        table {
+            margin: 0.8em 0;
+        }
+
+        li>ol,
+        li>ul {
+            margin: 0 0;
+        }
+
+        hr {
+            height: 2px;
+            padding: 0;
+            margin: 16px 0;
+            background-color: #e7e7e7;
+            border: 0 none;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+
+        li p.first {
+            display: inline-block;
+        }
+
+        ul,
+        ol {
+            padding-left: 30px;
+        }
+
+        ul:first-child,
+        ol:first-child {
+            margin-top: 0;
+        }
+
+        ul:last-child,
+        ol:last-child {
+            margin-bottom: 0;
+        }
+
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding: 0 15px;
+            color: #777777;
+        }
+
+        blockquote blockquote {
+            padding-right: 0;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table th:first-child,
+        table td:first-child {
+            margin-top: 0;
+        }
+
+        table th:last-child,
+        table td:last-child {
+            margin-bottom: 0;
+        }
+
+        .CodeMirror-lines {
+            padding-left: 4px;
+        }
+
+        .code-tooltip {
+            box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+            border-top: 1px solid #eef2f2;
+        }
+
+        .md-fences,
+        code,
+        tt {
+            border: 1px solid #e7eaed;
+            background-color: #f8f8f8;
+            border-radius: 3px;
+            padding: 0;
+            padding: 2px 4px 0px 4px;
+            font-size: 0.9em;
+        }
+
+        code {
+            background-color: #f3f4f4;
+            padding: 0 2px 0 2px;
+        }
+
+        .md-fences {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            padding-top: 8px;
+            padding-bottom: 6px;
+        }
+
+
+        .md-task-list-item>input {
+            margin-left: -1.3em;
+        }
+
+        @media print {
+            html {
+                font-size: 13px;
+            }
+
+            table,
+            pre {
+                page-break-inside: avoid;
+            }
+
+            pre {
+                word-wrap: break-word;
+            }
+        }
+
+        .md-fences {
+            background-color: #f8f8f8;
+        }
+
+        #write pre.md-meta-block {
+            padding: 1rem;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border: 0;
+            border-radius: 3px;
+            color: #777777;
+            margin-top: 0 !important;
+        }
+
+        .mathjax-block>.code-tooltip {
+            bottom: .375rem;
+        }
+
+        .md-mathjax-midline {
+            background: #fafafa;
+        }
+
+        #write>h3.md-focus:before {
+            left: -1.5625rem;
+            top: .375rem;
+        }
+
+        #write>h4.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h5.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h6.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        .md-image>.md-meta {
+            /*border: 1px solid #ddd;*/
+            border-radius: 3px;
+            padding: 2px 0px 0px 4px;
+            font-size: 0.9em;
+            color: inherit;
+        }
+
+        .md-tag {
+            color: #a7a7a7;
+            opacity: 1;
+        }
+
+        .md-toc {
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-tabs {
+            border-bottom: none;
+        }
+
+        #typora-quick-open {
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+        }
+
+        #typora-quick-open-item {
+            background-color: #FAFAFA;
+            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        /** focus mode */
+        .on-focus-mode blockquote {
+            border-left-color: rgba(85, 85, 85, 0.12);
+        }
+
+        header,
+        .context-menu,
+        .megamenu-content,
+        footer {
+            font-family: "Segoe UI", "Arial", sans-serif;
+        }
+
+        .file-node-content:hover .file-node-icon,
+        .file-node-content:hover .file-node-open-state {
+            visibility: visible;
+        }
+
+        .mac-seamless-mode #typora-sidebar {
+            background-color: #fafafa;
+            background-color: var(--side-bar-bg-color);
+        }
+
+        .md-lang {
+            color: #b4654d;
+        }
+
+        /*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+        #md-notification .btn {
+            border: 0;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+            opacity: 0.4;
+        }
+
+        .ty-preferences .window-content {
+            background-color: #fafafa;
+        }
+
+        .ty-preferences .nav-group-item.active {
+            color: white;
+            background: #999;
+        }
+
+        .menu-item-container a.menu-style-btn {
+            background-color: #f5f8fa;
+            background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+        }
+    </style>
+    <title>2021090916028 -刘诗月-考核-后端-01</title>
+</head>
+
+<body class='typora-export os-windows'>
+    <div class='typora-export-content'>
+        <div id='write' class=''>
+            <p><span>2021090916028 -刘诗月-考核-后端-01</span></p>
+            <h2 id='一什么是linux及linux发行版'><span>一.什么是LINUX及linux发行版</span></h2>
+            <blockquote>
+                <p><span>linux
+                        是遵循GPL协议（可以复制软件、修改源码、修改后再次发行，但不能取消以free为核心的GPL授权），基于</span><strong><span>完全开源</span></strong><span>的内核基础上开发的类UNIX的开源操作系统.</span>
+                </p>
+            </blockquote>
+            <blockquote>
+                <p><span>linux发行版（可完全安装套件）是由linux内核，GNU工具(1994年UNIX有上百个组件，Richard研发的GNU为这些组件中的几乎每个组件开发自由的替代品，除了内核这个重要组成部分）和库（包含许多基本工具的GNU软件包）以及软件集合构成的操作系统。</span>
+                </p>
+                <p><span>各个发行版使用同样的linux内核，但不同的发行版会为用户提供不同的软件、工具和桌面环境，发行版本有ubuntu,red hat,centos等等。</span></p>
+            </blockquote>
+            <h2 id='二题目截图包含拓展选做）'><span>二.题目截图（包含拓展选做）</span></h2>
+            <h3 id='1搭建的虚拟机'><span>1.搭建的虚拟机</span></h3>
+            <p><img src="./img/w01/01 1.png" referrerpolicy="no-referrer"></p>
+            <p><span>其实最开始使用的是wsl子系统</span></p>
+            <p><img src="./img/w01/01 2.png" referrerpolicy="no-referrer"></p>
+            <p><span>但后来发现进行top命令的时候是0 users，就放弃了</span></p>
+            <p><img src="./img/others/QQ图片20210912082711.png" referrerpolicy="no-referrer"></p>
+            <p><span>第一次搭建虚拟机的时候，镜像文件在itllyou上下载成了windows的镜像，还卡了很久.....发现之后很无语，就挺傻的</span></p>
+            <p><img src="./img/w01/01 27.jpg" referrerpolicy="no-referrer"></p>
+            <p>&nbsp;</p>
+            <h3 id='2网络情况分析'><span>2.网络情况分析</span></h3>
+            <p><img src="./img/others/QQ图片20210913222122.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/others/QQ图片20210913222130.png" referrerpolicy="no-referrer"></p>
+            <p><span>（1）</span></p>
+            <p><span>未使用桥接模式，即未使用有线网卡</span></p>
+            <p><span>（2）</span></p>
+            <p><span>连接了仅主机模式，即通过DHCP服务，由服务器控制一段IP地址范围，当用户登录服务器时，获得IP地址（子网IP: 192.168.171 .0）与子网掩码（255. 255. 255.
+                    0），并分配给虚拟器，但此模式无法访问外部网络。</span></p>
+            <p><span>可以与物理机互相访问</span></p>
+            <p><img src="./img/others/QQ图片20210916080842.png" referrerpolicy="no-referrer"></p>
+            <p><span>但无法访问外部网络</span></p>
+            <p><img src="./img/others/QQ图片20210913231250.png" referrerpolicy="no-referrer"></p>
+            <p><span>（3）</span></p>
+            <p><span>已连接NAT模式，提供DHCP服务，并且可以访问外部网络。</span></p>
+            <p><img src="./img/others/QQ图片20210913231254.png" referrerpolicy="no-referrer"></p>
+            <h3 id='3-执行top命令并简单分析执行内容'><span>3. 执行TOP命令并简单分析执行内容</span></h3>
+            <p><img src="./img/others/QQ图片20210916073459.png" referrerpolicy="no-referrer"></p>
+            <p><strong><span>第一行</span></strong></p>
+            <blockquote>
+                <p><span>系统时间：15：32：09</span></p>
+                <p><span>uptime,系统自上次启动以来的使用时间：2min</span></p>
+                <p><span>当前登录用户： 2 users</span></p>
+                <p><span>最近5、10、15分钟内的平均负载:load average: 0.25,0.18,0.07（平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数）</span></p>
+            </blockquote>
+            <p><strong><span>第二行</span></strong></p>
+            <blockquote>
+                <p><span>tasks任务</span></p>
+                <blockquote>
+                    <p><span>总进程239，运行1，休眠238，停止0，僵尸进程0（僵尸进程是指一个已经终止、但是其父进程尚未对其进行善后处理获取终止进程的有关信息的进程）</span></p>
+                </blockquote>
+            </blockquote>
+            <p><strong><span>第三行</span></strong></p>
+            <blockquote>
+                <p><span>cpu状态信息</span></p>
+                <blockquote>
+                    <p><span>user space:用户空间占用cpu百分比0.0 %</span></p>
+                    <p><span>sysctl:内核空间占用CPU百分比0.0%（sysctl命令被用于在内核运行时动态地修改内核的运行参数，可用的内核参数在目录/proc/sys中）</span></p>
+                    <p><span>niced:改变过优先级的进程占用CPU的百分比：0.0%</span></p>
+                    <p><span>idle:空闲CPU百分比:100%</span></p>
+                    <p><span>wait: IO等待占用CPU的百分比（在计算机系统中I/O就是输入(Input)和输出(Output)的意思，只要具有输入输出类型的交互系统都可以认为是I/O系统）</span>
+                    </p>
+                    <p><span>hardware IRQ:硬中断占用CPU的百分比：0.0%（IRQ全称为Interrupt Request，即是“中断请求”的意思，执行硬件中断请求的动作）</span></p>
+                    <p><span>Software Interrupts：软中断占用CPU的百分比0.0%</span></p>
+                    <p><span>st：虚拟机占用CPU百分比</span></p>
+                </blockquote>
+            </blockquote>
+            <p><strong><span>第四行</span></strong></p>
+            <blockquote>
+                <p><span>内存状态，其中used为系统内核控制的内存数，buff为缓存的内存量</span></p>
+            </blockquote>
+            <p><strong><span>第五行</span></strong></p>
+            <blockquote>
+                <p><span>swap交换分区信息（通过在硬盘中预先划分一定的空间，然后将把内存中暂时不常用的数据临时存放到硬盘中，以便腾出物理内存空间让更活跃的程序服务来使用的技术）</span></p>
+                <blockquote>
+                    <p><span>其中avail mem为可用内存</span></p>
+                </blockquote>
+            </blockquote>
+            <p><strong><span>第七行后</span></strong></p>
+            <blockquote>
+                <p><span>Process Identifier（进程标识符），user（进程所有者）</span></p>
+                <p><span>PR进程优先级，nice值表优先级</span></p>
+                <p><span>VIRT（virtual memory usage）进程使用虚拟内存总量（SWAP+RES）</span></p>
+                <p><span>RES（resident memory usage）常驻内存（进程当前使用的内存大小）</span></p>
+                <p><span>SHR共享内存的大小</span></p>
+                <p><span>S为进程状态休眠，R为进程状态运行</span></p>
+                <p><span>%CPU:上次更新到现在的CPU时间占用百分比</span></p>
+                <p><span>%MEM：进程使用的物理内存百分比</span></p>
+                <p><span>TIME+：进程使用的CPU时间总计，单位1/100秒</span></p>
+                <p><span>COMMAND：进程名称</span></p>
+            </blockquote>
+            <p>&nbsp;</p>
+            <h3 id='4随便创建一个文件并写点东西'><span>4.随便创建一个文件，并写点东西</span></h3>
+            <p><img src="./img/w01/01 3.png" referrerpolicy="no-referrer"></p>
+            <h3 id='5创建用户名为学号的新用户并切换至该用户访问之前的文件'><span>5.创建用户名为学号的新用户，并切换至该用户访问之前的文件</span></h3>
+            <p><img src="./img/w01/01 4.png" referrerpolicy="no-referrer"></p>
+            <p><span>说实话，创建用户名为学号的新用户这里，在我还在使用wsl子系统的时候我卡了很久，查了一下发现它说我这个新用户的名字不符合正则表达式：</span></p>
+            <p><img src="./img/w01/01 29.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w01/01 28.png" referrerpolicy="no-referrer"></p>
+            <p><span>后来用虚拟机，secureCRT之后就没有碰到这个问题了？</span></p>
+            <h3 id='6更改txt的权限使学号用户无法访问'><span>6.更改txt的权限，使学号用户无法访问</span></h3>
+            <p><img src="./img/w01/01 5.png" referrerpolicy="no-referrer"></p>
+            <h3 id='7改变此文件的所属用户和组两个用户分别查看并分析结果为何这样'><span>7.改变此文件的所属用户和组，两个用户分别查看，并分析结果为何这样</span></h3>
+            <p>&nbsp;</p>
+            <p><img src="./img/w01/01 7.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w01/01 8.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w01/01 9.png" referrerpolicy="no-referrer"></p>
+            <p><span>因为设置了权限700，只有所属用户可以对该文件进行读写执行，用户组与其他用户则对这个文件没有任何权利</span></p>
+            <h3 id='8将最开始的用户加入用户组再次访问'><span>8.将最开始的用户加入用户组，再次访问</span></h3>
+            <p><img src="./img/w01/01 10.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w01/01 11.png" referrerpolicy="no-referrer"></p>
+            <p><span>最开始仍是700的权限设置，所以即使加入了用户组，也仍然无法访问。改成了770的设置后，用户组也具有了读写执行的权利，原来用户虽然是others，但因为和学号用户在一个用户组中，所以也可以访问。</span>
+            </p>
+            <h3 id='9拓展选做1了解一下进程概念'><span>9.拓展选做1：了解一下进程概念</span></h3>
+            <blockquote>
+                <p><img src="./img/w01/01 21.png" referrerpolicy="no-referrer"></p>
+                <p><span>打开任务管理器就能看到进程，可以发现平时我们打开一个应用软件，其实也就是开启了一个进程。电脑把如图所示的资源（CPU资源、内存资源、磁盘资源...）分配给各个进程，进程就是电脑分配资源的一个最小单位。</span>
+                </p>
+                <p><span>进程的狭义定义是正在运行的程序的实例，它动态产生动态消亡、能与其他进程并发运行，且进程间不会相互影响，它是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。</span>
+                </p>
+            </blockquote>
+            <blockquote>
+                <p><span>进程是线程的容器，一个进程包含多个线程，线程必须在进程的前提下才能运行，无法独自运行。就比如我们打开了qq,整个qq程序是一个进程，进入qq后打开的各种聊天窗口，用qq进行的传文件等等，它们就是一个个线程，无法脱离qq进程运行，但共用qq这个进程的资源。</span>
+                </p>
+            </blockquote>
+            <h3 id='10-拓展选作2查看占用80端口的进程'><span>10. 拓展选作2：查看占用80端口的进程</span></h3>
+            <p><span>最开始的时候，发现我的80端口都是关着的：</span>
+                <img src="./img/w01/01 31.png" referrerpolicy="no-referrer">
+            </p>
+            <p><span>打开之后，发现它只有监听：</span></p>
+            <p><img src="./img/w01/01 32.png" referrerpolicy="no-referrer"></p>
+            <p><span>查了一下，发现-l仅显示连接状态为listen的服务的网络状态，而我应该加个 -a显示本机的所有连接和监听端口，-p是显示连接对应PID与程序名：</span></p>
+            <p><img src="./img/w01/01 12.png" referrerpolicy="no-referrer"></p>
+            <p><span>这时可以看到显示了active internet connections，即浏览器已开启。</span></p>
+            <p><span>后来发现，浏览器好像是会自动开启的吗？最开始我为了让它开启费尽心力，甚至用到一些links+命令：</span></p>
+            <p><img src="./img/w01/01 32.png" referrerpolicy="no-referrer"></p>
+            <h3 id='11拓展选作3挂起ping本地ip再重新进行'><span>11.拓展选作3：挂起ping+本地ip，再重新进行</span></h3>
+            <p><img src="./img/w01/01 16.png" referrerpolicy="no-referrer"></p>
+            <h3 id='12拓展选作4挂起后杀死'><span>12.拓展选作4：挂起后杀死</span></h3>
+            <p><img src="./img/w01/01 17.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w01/01 18.png" referrerpolicy="no-referrer"></p>
+            <p><span>即想再运行，发现已终止</span></p>
+            <p><span>最开始一直以为杀死是ctrl+
+                    c，查了一下，ctrl+c是终止当前在终端窗口运行的命令或脚本，kill的话杀得挺全能的，而且如果给什么-9，-15，相当于能带来不同的杀法，比如-15就杀得很优雅。</span></p>
+            <h3 id='13拓展选做5执行pstree命令'><span>13.拓展选做5：执行pstree命令</span></h3>
+            <p><img src="./img/others/QQ图片20210916234222.png" referrerpolicy="no-referrer"></p>
+            <p><span>pstree显示所有正在运行的进程的分层树结构，只显示进程的名字，相同进程合并显示</span></p>
+            <blockquote>
+                <p><span>systemd为所有系统进程的父进程，PID=1,也是启动时启动的第一个进程, pstree -s会显示所有子进程的父进程。</span></p>
+                <p><span>{}为子线程，比如polkitd(1040)有5个子线程（1052，1056，1061，1068，1073），而显示出的子进程无{}，比如login(905)的有一个子进程（2522）</span>
+                </p>
+                <p><span>每个进程或线程（线程是进程的一个实体，是进程的一条执行路径）的括号中都显示PID，即括号内的数字</span></p>
+            </blockquote>
+            <p><img src="./img/others/QQ图片20210917000515.png" referrerpolicy="no-referrer"></p>
+            <p><span>pstree -a显示了每个程序的完整指令及参数，包含路径</span></p>
+            <h2 id='三对linux文件属性和用户权限管理大致理解'><span>三.对Linux文件属性和用户权限管理大致理解</span></h2>
+            <h4 id='linux文件属性'><span>linux文件属性</span></h4>
+            <p><img src="./img/others/QQ图片20210917002732.png" referrerpolicy="no-referrer"></p>
+            <blockquote>
+                <p><span>第一列：i节点（以链接为文件的指针，指向文件数据的地址；硬链接(ln)，因为i节点和源文件一样，i节点记录的链接即使源文件消失也有作用，软链接（ln
+                        -s)则i节点号不同，删除源文件后，软链接不可用），一个i节点可对应多个文件，而一个文件只能对应一个i节点</span></p>
+                <p><span>第二列：文件的类型与权限</span></p>
+                <blockquote>
+                    <p><span>-:文件</span></p>
+                    <p><span>d:目录</span></p>
+                    <p><span>r：读权限，对应4；w：写权限，对应2；x：执行权限（这来源于二进制，有权限用1表示，没有权限用0表示，转换为10进制即为我们现在使用的数字），对应1（第二列共分为三组，对应权限人员分别为user,group,others)</span>
+                    </p>
+                </blockquote>
+                <p><span>第三列：有多少文件名链接到了此节点：2，5，1</span></p>
+                <p><span>第四列：该文件的所有者</span></p>
+                <p><span>第五列：该文件的所有组</span></p>
+                <p><span>第六列：以B为单位的容量：6，46</span></p>
+                <p><span>第七列：文件创建或最新修改的时间</span></p>
+                <p><span>第八列：文件名</span></p>
+            </blockquote>
+            <h4 id='用户权限管理其实不太清楚是需要我写什么）'><span>用户权限管理（其实不太清楚是需要我写什么）</span></h4>
+            <blockquote>
+                <p><span>root：超级用户，UID=0,不受限制，有些程序只有root才能进行，比如说/sbin目录下的命令程序，有点类似于windows系统中的管理员吧。</span></p>
+                <p><span>普通用户：具有一定限制，UID：500-60000，有些程序命令所有用户都能执行，比如/bin目录下的，当然也可以执行它自己家目录
+                        下的命令。它的账号信息放在/etc/passwd下，密码信息放在/etc/shadow下。</span></p>
+                <p><img src="./img/w01/01 25.png" referrerpolicy="no-referrer"></p>
+                <p><img src="./img/w01/01 26.png" referrerpolicy="no-referrer"></p>
+                <p><span>关于root与普通用户的文件权限</span></p>
+                <p><span>发现文件创建后，默认状态下root和普通用户拥有的权限在用户组上还有小小的不同</span></p>
+                <p><img src="./img/w01/01 22.png" referrerpolicy="no-referrer"></p>
+                <p><img src="./img/w01/01 23.png" referrerpolicy="no-referrer"></p>
+                <p><img src="./img/w01/01 24.png" referrerpolicy="no-referrer"></p>
+                <blockquote>
+                    <p><span>一般权限有关的是后三个数字，即它的默认权限，新建文件，默认没有可执行权限，只有r，w权限，0代表拥有全部rw权限；2代表没有写的权限，只有读权限</span></p>
+                </blockquote>
+                <p><span>系统用户：不登录系统，一般是用来维持某个服务程序的。UID :1-499</span></p>
+            </blockquote>
+            <h2 id='四-顺便贴一个学习基本命令时的笔记虽然好像没有什么意义）'><span>四. 顺便贴一个学习基本命令时的笔记（虽然好像没有什么意义）</span></h2>
+            <h3 id='相关命令学习'><span>相关命令学习</span></h3>
+            <ol start=''>
+                <li>
+                    <blockquote>
+                        <p><span>cd：切换目录</span></p>
+                    </blockquote>
+                    <blockquote>
+                        <p><span>cd - 回到上一目录</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>ls : 列出当前目录内容，ls [参数] [路径或选项]，eg. ls -lrt /home/(lrt可缩写为ll，参数可一起使用)</span></p>
+                        <p><span>ls -a ：显示隐藏文件</span></p>
+                        <p><span>ls -l :列表形式列出</span></p>
+                        <blockquote>
+                            <p><span>ls -lt 以时间顺序列出</span></p>
+                            <p><span>ls-ltr ：日期升序排列</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>cat:查看小文件内容</span></p>
+                        <blockquote>
+                            <p><span>cat -n :排序文件内容</span></p>
+                            <p><span>cat &gt;123.txt:可在该文件中输入内容</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>move: 查看大文件内容</span></p>
+                        <p><span>空格键可翻页，按住q可退出</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>head: 查看文件前十行</span></p>
+                        <blockquote>
+                            <p><span>head 20 ：可查看20行</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>tail :查看文件后世行</span></p>
+                        <blockquote>
+                            <p><span>tail 20 :查看文件后20行</span></p>
+                            <p><span>tail -f :动态查看文件内容</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>touch :创建空文件，eg. touch 123.txt</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>mkdir :创建目录 eg. mkdir bri</span></p>
+                        <blockquote>
+                            <p><span>mdkir -p ：无论是否有此目录，都会创建</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>pwd :查询所在目录</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>rmdir :删除目录</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>cp:拷贝文件 </span></p>
+                        <blockquote>
+                            <p><span>cp 需复制文件 复制到地址/</span></p>
+                            <p><span>cp 需复制文件 复制到地址/新文件名（若用cp -a可复制文件属性）</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>mv:移动或更名</span></p>
+                        <blockquote>
+                            <p><span>更名：mv 123.txt 345.php（将mv 123.txt改成345.php)</span></p>
+                            <p><span>移动：mv 123.txt /home/ (将123.txt移动到home目录下),home/新名字</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>rm:删除文件，不可删除目录，无提示</span></p>
+                        <blockquote>
+                            <p><span>rm-rf强制删除无提示,目录文件都可删除</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>diff :对比文件差异，diff 文件一 文件二</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>ssh: ssh ip地址（远程安全登陆方式）</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>id:查看当前用户</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>uname :查看系统信息</span></p>
+                        <blockquote>
+                            <p><span>uname -a查看更详细的信息</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>ping:查看网络是否通</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>echo: 输出内容 &#39;&#39;</span></p>
+                        <p><span>echo $?也可判断上一条命令是否正确</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>man:查看帮助文档（不知道命令加什么参数时，查看参数作用可使用）,man ls /-可搜索</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>help: 查看内部命令帮助（对于shell内置命令）</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>clear :清屏，=ctrl +l</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>who :当前登录用户信息</span></p>
+                        <blockquote>
+                            <p><span>whoami</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>uptime:当前时间及运行时间</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>w:显示系统命令（类似uptime与who结合）</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>free: 查看内存使用情况</span></p>
+                        <blockquote>
+                            <p><span>free -m：以 m为单位显示内存</span></p>
+                            <p><span>free -h ：显示内存单位</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>wc:统计行数，wc -l 文件名</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>grep:查找文件里符合条件的字符串：grep &#39;查找内容&#39; 所在文件名 |wc-l（可统计）</span></p>
+                        <blockquote>
+                            <p><span>grep -n :查看查找内容准确位置</span></p>
+                        </blockquote>
+                        <blockquote>
+                            <p><span>grep -w ：精确匹配，普通198可能匹配出1980，而精确匹配只有198</span></p>
+                        </blockquote>
+                        <blockquote>
+                            <p><span>grep -v:取反</span></p>
+                        </blockquote>
+                        <blockquote>
+                            <p><span>grep -i :查找时忽略大小写</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>find :查找文件 ，find / -name ...,若再叠加-type f就是查找txt</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>uniq:对排序好的内容进行统计</span></p>
+                        <blockquote>
+                            <p><span>uniq -c (count)计数</span></p>
+                            <p><span>uniq -c | sort -n （+排列），sort:对内容进行排序</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>df:查看文件系统磁盘使用情况</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>netstat -tunlp:查看网络端口使用情况</span></p>
+                        <blockquote>
+                            <p><span>-t:显示tcp端口</span></p>
+                            <p><span>-u：显示udp端口</span></p>
+                            <p><span>-n: 指明拒绝显示别名</span></p>
+                            <p><span>-l：指明监听的</span></p>
+                            <p><span>-p:：指明显示建立相关连接的程序。</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>hostname:显示主机名</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>ps:查看当前服务器进程</span></p>
+                        <blockquote>
+                            <p><span>ps -ef:显示所有进程</span></p>
+                            <p><span>常与grep命令连用查找特定进程，eg. ps -ef | grep ...(master为主进程，worker为副进程）)</span></p>
+                            <p><span>ps -aux：可显示出cpu使用情况</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>kill:杀死进程，kill -l,kill -9 停止内容（强制停止）</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>top（按住键盘q退出）</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>du : 统计大小,直接du统计总和</span></p>
+                        <blockquote>
+                            <p><span>du -sm:统计文件大小，以m为单位</span></p>
+                        </blockquote>
+                        <blockquote>
+                            <p><span>du -sh</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>firewall-cmd --state:查看当前系统防火墙状态</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>cal命令：查看日历，eg. cal 2009</span></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><span>vi:命令模式</span></p>
+                        <p><span>插入模式i，o，a</span></p>
+                        <p><span>底行模式:</span></p>
+                        <blockquote>
+                            <p><span>q! #强制离开不保存 </span></p>
+                            <p><span>wq #离开并保存 </span></p>
+                            <p><span>wq! #强制离开并保存 </span></p>
+                            <p><span>!ls #暂时离开</span></p>
+                        </blockquote>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+</body>
+
+</html>

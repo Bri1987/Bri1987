@@ -1,0 +1,1676 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <style type='text/css'>
+        html {
+            overflow-x: initial !important;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --select-text-bg-color: #B5D6FC;
+            --select-text-font-color: auto;
+            --monospace: "Lucida Console", Consolas, "Courier", monospace;
+            --title-bar-height: 20px;
+        }
+
+        .mac-os-11 {
+            --title-bar-height: 28px;
+        }
+
+        html {
+            font-size: 14px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: auto;
+            inset: 0px;
+            font-size: 1rem;
+            line-height: 1.42857;
+            overflow-x: hidden;
+            background: inherit;
+            tab-size: 4;
+        }
+
+        iframe {
+            margin: auto;
+        }
+
+        a.url {
+            word-break: break-all;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0px;
+        }
+
+        .in-text-selection,
+        ::selection {
+            text-shadow: none;
+            background: var(--select-text-bg-color);
+            color: var(--select-text-font-color);
+        }
+
+        #write {
+            margin: 0px auto;
+            height: auto;
+            width: inherit;
+            word-break: normal;
+            overflow-wrap: break-word;
+            position: relative;
+            white-space: normal;
+            overflow-x: visible;
+            padding-top: 36px;
+        }
+
+        #write.first-line-indent p {
+            text-indent: 2em;
+        }
+
+        #write.first-line-indent li p,
+        #write.first-line-indent p * {
+            text-indent: 0px;
+        }
+
+        #write.first-line-indent li {
+            margin-left: 2em;
+        }
+
+        .for-image #write {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        body.typora-export {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .typora-export .footnote-line,
+        .typora-export li,
+        .typora-export p {
+            white-space: pre-wrap;
+        }
+
+        .typora-export .task-list-item input {
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 500px) {
+            body.typora-export {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            #write {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .CodeMirror-sizer {
+                margin-left: 0px !important;
+            }
+
+            .CodeMirror-gutters {
+                display: none !important;
+            }
+        }
+
+        #write li>figure:last-child {
+            margin-bottom: 0.5rem;
+        }
+
+        #write ol,
+        #write ul {
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            vertical-align: middle;
+            image-orientation: from-image;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            color: inherit;
+            font: inherit;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            line-height: normal;
+            padding: 0px;
+        }
+
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p,
+        #write pre {
+            width: inherit;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p {
+            position: relative;
+        }
+
+        p {
+            line-height: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            break-after: avoid-page;
+            break-inside: avoid;
+            orphans: 4;
+        }
+
+        p {
+            orphans: 4;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        .md-math-block,
+        .md-rawblock,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .md-blockmeta {
+            color: rgb(204, 204, 204);
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        sup.md-footnote {
+            padding: 2px 4px;
+            background-color: rgba(238, 238, 238, 0.7);
+            color: rgb(85, 85, 85);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        sup.md-footnote a,
+        sup.md-footnote a:hover {
+            color: inherit;
+            text-transform: inherit;
+            text-decoration: inherit;
+        }
+
+        #write input[type="checkbox"] {
+            cursor: pointer;
+            width: inherit;
+            height: inherit;
+        }
+
+        figure {
+            overflow-x: auto;
+            margin: 1.2em 0px;
+            max-width: calc(100% + 16px);
+            padding: 0px;
+        }
+
+        figure>table {
+            margin: 0px;
+        }
+
+        tr {
+            break-inside: avoid;
+            break-after: auto;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            width: 100%;
+            overflow: auto;
+            break-inside: auto;
+            text-align: left;
+        }
+
+        table.md-table td {
+            min-width: 32px;
+        }
+
+        .CodeMirror-gutters {
+            border-right: 0px;
+            background-color: inherit;
+        }
+
+        .CodeMirror-linenumber {
+            user-select: none;
+        }
+
+        .CodeMirror {
+            text-align: left;
+        }
+
+        .CodeMirror-placeholder {
+            opacity: 0.3;
+        }
+
+        .CodeMirror pre {
+            padding: 0px 4px;
+        }
+
+        .CodeMirror-lines {
+            padding: 0px;
+        }
+
+        div.hr:focus {
+            cursor: none;
+        }
+
+        #write pre {
+            white-space: pre-wrap;
+        }
+
+        #write.fences-no-line-wrapping pre {
+            white-space: pre;
+        }
+
+        #write pre.ty-contain-cm {
+            white-space: normal;
+        }
+
+        .CodeMirror-gutters {
+            margin-right: 4px;
+        }
+
+        .md-fences {
+            font-size: 0.9rem;
+            display: block;
+            break-inside: avoid;
+            text-align: left;
+            overflow: visible;
+            white-space: pre;
+            background: inherit;
+            position: relative !important;
+        }
+
+        .md-fences-adv-panel {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            padding-top: 0px;
+            padding-bottom: 8px;
+            overflow-x: auto;
+        }
+
+        #write .md-fences.mock-cm {
+            white-space: pre-wrap;
+        }
+
+        .md-fences.md-fences-with-lineno {
+            padding-left: 0px;
+        }
+
+        #write.fences-no-line-wrapping .md-fences.mock-cm {
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .md-fences.mock-cm.md-fences-with-lineno {
+            padding-left: 8px;
+        }
+
+        .CodeMirror-line,
+        twitterwidget {
+            break-inside: avoid;
+        }
+
+        .footnotes {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        .footnotes+.footnotes {
+            margin-top: 0px;
+        }
+
+        .md-reset {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            outline: 0px;
+            vertical-align: top;
+            background: 0px 0px;
+            text-decoration: none;
+            text-shadow: none;
+            float: none;
+            position: static;
+            width: auto;
+            height: auto;
+            white-space: nowrap;
+            cursor: inherit;
+            -webkit-tap-highlight-color: transparent;
+            line-height: normal;
+            font-weight: 400;
+            text-align: left;
+            box-sizing: content-box;
+            direction: ltr;
+        }
+
+        li div {
+            padding-top: 0px;
+        }
+
+        blockquote {
+            margin: 1rem 0px;
+        }
+
+        li .mathjax-block,
+        li p {
+            margin: 0.5rem 0px;
+        }
+
+        li blockquote {
+            margin: 1rem 0px;
+        }
+
+        li {
+            margin: 0px;
+            position: relative;
+        }
+
+        blockquote> :last-child {
+            margin-bottom: 0px;
+        }
+
+        blockquote> :first-child,
+        li> :first-child {
+            margin-top: 0px;
+        }
+
+        .footnotes-area {
+            color: rgb(136, 136, 136);
+            margin-top: 0.714rem;
+            padding-bottom: 0.143rem;
+            white-space: normal;
+        }
+
+        #write .footnote-line {
+            white-space: pre-wrap;
+        }
+
+        @media print {
+
+            body,
+            html {
+                border: 1px solid transparent;
+                height: 99%;
+                break-after: avoid;
+                break-before: avoid;
+                font-variant-ligatures: no-common-ligatures;
+            }
+
+            #write {
+                margin-top: 0px;
+                padding-top: 0px;
+                border-color: transparent !important;
+            }
+
+            .typora-export * {
+                -webkit-print-color-adjust: exact;
+            }
+
+            .typora-export #write {
+                break-after: avoid;
+            }
+
+            .typora-export #write::after {
+                height: 0px;
+            }
+
+            .is-mac table {
+                break-inside: avoid;
+            }
+
+            .typora-export-show-outline .typora-export-sidebar {
+                display: none;
+            }
+        }
+
+        .footnote-line {
+            margin-top: 0.714em;
+            font-size: 0.7em;
+        }
+
+        a img,
+        img a {
+            cursor: pointer;
+        }
+
+        pre.md-meta-block {
+            font-size: 0.8rem;
+            min-height: 0.8rem;
+            white-space: pre-wrap;
+            background: rgb(204, 204, 204);
+            display: block;
+            overflow-x: hidden;
+        }
+
+        p>.md-image:only-child:not(.md-img-error) img,
+        p>img:only-child {
+            display: block;
+            margin: auto;
+        }
+
+        #write.first-line-indent p>.md-image:only-child:not(.md-img-error) img {
+            left: -2em;
+            position: relative;
+        }
+
+        p>.md-image:only-child {
+            display: inline-block;
+            width: 100%;
+        }
+
+        #write .MathJax_Display {
+            margin: 0.8em 0px 0px;
+        }
+
+        .md-math-block {
+            width: 100%;
+        }
+
+        .md-math-block:not(:empty)::after {
+            display: none;
+        }
+
+        .MathJax_ref {
+            fill: currentcolor;
+        }
+
+        [contenteditable="true"]:active,
+        [contenteditable="true"]:focus,
+        [contenteditable="false"]:active,
+        [contenteditable="false"]:focus {
+            outline: 0px;
+            box-shadow: none;
+        }
+
+        .md-task-list-item {
+            position: relative;
+            list-style-type: none;
+        }
+
+        .task-list-item.md-task-list-item {
+            padding-left: 0px;
+        }
+
+        .md-task-list-item>input {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin-left: -1.2em;
+            margin-top: calc(1em - 10px);
+            border: none;
+        }
+
+        .math {
+            font-size: 1rem;
+        }
+
+        .md-toc {
+            min-height: 3.58rem;
+            position: relative;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+
+        .md-toc-content {
+            position: relative;
+            margin-left: 0px;
+        }
+
+        .md-toc-content::after,
+        .md-toc::after {
+            display: none;
+        }
+
+        .md-toc-item {
+            display: block;
+            color: rgb(65, 131, 196);
+        }
+
+        .md-toc-item a {
+            text-decoration: none;
+        }
+
+        .md-toc-inner:hover {
+            text-decoration: underline;
+        }
+
+        .md-toc-inner {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .md-toc-h1 .md-toc-inner {
+            margin-left: 0px;
+            font-weight: 700;
+        }
+
+        .md-toc-h2 .md-toc-inner {
+            margin-left: 2em;
+        }
+
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 4em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 6em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 8em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 10em;
+        }
+
+        @media screen and (max-width: 48em) {
+            .md-toc-h3 .md-toc-inner {
+                margin-left: 3.5em;
+            }
+
+            .md-toc-h4 .md-toc-inner {
+                margin-left: 5em;
+            }
+
+            .md-toc-h5 .md-toc-inner {
+                margin-left: 6.5em;
+            }
+
+            .md-toc-h6 .md-toc-inner {
+                margin-left: 8em;
+            }
+        }
+
+        a.md-toc-inner {
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        .footnote-line a:not(.reversefootnote) {
+            color: inherit;
+        }
+
+        .md-attr {
+            display: none;
+        }
+
+        .md-fn-count::after {
+            content: ".";
+        }
+
+        code,
+        pre,
+        samp,
+        tt {
+            font-family: var(--monospace);
+        }
+
+        kbd {
+            margin: 0px 0.1em;
+            padding: 0.1em 0.6em;
+            font-size: 0.8em;
+            color: rgb(36, 39, 41);
+            background: rgb(255, 255, 255);
+            border: 1px solid rgb(173, 179, 185);
+            border-radius: 3px;
+            box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .md-comment {
+            color: rgb(162, 127, 3);
+            opacity: 0.6;
+            font-family: var(--monospace);
+        }
+
+        code {
+            text-align: left;
+            vertical-align: initial;
+        }
+
+        a.md-print-anchor {
+            white-space: pre !important;
+            border-width: initial !important;
+            border-style: none !important;
+            border-color: initial !important;
+            display: inline-block !important;
+            position: absolute !important;
+            width: 1px !important;
+            right: 0px !important;
+            outline: 0px !important;
+            background: 0px 0px !important;
+            text-decoration: initial !important;
+            text-shadow: initial !important;
+        }
+
+        .os-windows.monocolor-emoji .md-emoji {
+            font-family: "Segoe UI Symbol", sans-serif;
+        }
+
+        .md-diagram-panel>svg {
+            max-width: 100%;
+        }
+
+        [lang="flow"] svg,
+        [lang="mermaid"] svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        [lang="mermaid"] .node text {
+            font-size: 1rem;
+        }
+
+        table tr th {
+            border-bottom: 0px;
+        }
+
+        video {
+            max-width: 100%;
+            display: block;
+            margin: 0px auto;
+        }
+
+        iframe {
+            max-width: 100%;
+            width: 100%;
+            border: none;
+        }
+
+        .highlight td,
+        .highlight tr {
+            border: 0px;
+        }
+
+        mark {
+            background: rgb(255, 255, 0);
+            color: rgb(0, 0, 0);
+        }
+
+        .md-html-inline .md-plain,
+        .md-html-inline strong,
+        mark .md-inline-math,
+        mark strong {
+            color: inherit;
+        }
+
+        .md-expand mark .md-meta {
+            opacity: 0.3 !important;
+        }
+
+        mark .md-meta {
+            color: rgb(0, 0, 0);
+        }
+
+        @media print {
+
+            .typora-export h1,
+            .typora-export h2,
+            .typora-export h3,
+            .typora-export h4,
+            .typora-export h5,
+            .typora-export h6 {
+                break-inside: avoid;
+            }
+        }
+
+        .md-diagram-panel .messageText {
+            stroke: none !important;
+        }
+
+        .md-diagram-panel .start-state {
+            fill: var(--node-fill);
+        }
+
+        .md-diagram-panel .edgeLabel rect {
+            opacity: 1 !important;
+        }
+
+        .md-fences.md-fences-math {
+            font-size: 1em;
+        }
+
+        .md-fences-advanced:not(.md-focus) {
+            padding: 0px;
+            white-space: nowrap;
+            border: 0px;
+        }
+
+        .md-fences-advanced:not(.md-focus) {
+            background: inherit;
+        }
+
+        .typora-export-show-outline .typora-export-content {
+            max-width: 1440px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .typora-export-sidebar {
+            width: 300px;
+            font-size: 0.8rem;
+            margin-top: 80px;
+            margin-right: 18px;
+        }
+
+        .typora-export-show-outline #write {
+            --webkit-flex: 2;
+            flex: 2 1 0%;
+        }
+
+        .typora-export-sidebar .outline-content {
+            position: fixed;
+            top: 0px;
+            max-height: 100%;
+            overflow: hidden auto;
+            padding-bottom: 30px;
+            padding-top: 60px;
+            width: 300px;
+        }
+
+        @media screen and (max-width: 1024px) {
+
+            .typora-export-sidebar,
+            .typora-export-sidebar .outline-content {
+                width: 240px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .typora-export-sidebar {
+                display: none;
+            }
+        }
+
+        .outline-content li,
+        .outline-content ul {
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            list-style: none;
+        }
+
+        .outline-content ul {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .outline-content strong {
+            font-weight: 400;
+        }
+
+        .outline-expander {
+            width: 1rem;
+            height: 1.42857rem;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            cursor: pointer;
+            padding-left: 4px;
+        }
+
+        .outline-expander::before {
+            content: "";
+            position: relative;
+            font-family: Ionicons;
+            display: inline-block;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+
+        .outline-item {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            cursor: pointer;
+        }
+
+        .outline-expander:hover::before {
+            content: "";
+        }
+
+        .outline-h1>.outline-item {
+            padding-left: 0px;
+        }
+
+        .outline-h2>.outline-item {
+            padding-left: 1em;
+        }
+
+        .outline-h3>.outline-item {
+            padding-left: 2em;
+        }
+
+        .outline-h4>.outline-item {
+            padding-left: 3em;
+        }
+
+        .outline-h5>.outline-item {
+            padding-left: 4em;
+        }
+
+        .outline-h6>.outline-item {
+            padding-left: 5em;
+        }
+
+        .outline-label {
+            cursor: pointer;
+            display: table-cell;
+            vertical-align: middle;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .outline-label:hover {
+            text-decoration: underline;
+        }
+
+        .outline-item:hover {
+            border-color: rgb(245, 245, 245);
+            background-color: var(--item-hover-bg-color);
+        }
+
+        .outline-item:hover {
+            margin-left: -28px;
+            margin-right: -28px;
+            border-left: 28px solid transparent;
+            border-right: 28px solid transparent;
+        }
+
+        .outline-item-single .outline-expander::before,
+        .outline-item-single .outline-expander:hover::before {
+            display: none;
+        }
+
+        .outline-item-open>.outline-item>.outline-expander::before {
+            content: "";
+        }
+
+        .outline-children {
+            display: none;
+        }
+
+        .info-panel-tab-wrapper {
+            display: none;
+        }
+
+        .outline-item-open>.outline-children {
+            display: block;
+        }
+
+        .typora-export .outline-item {
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+        .typora-export .outline-item:hover {
+            margin-right: -8px;
+            border-right: 8px solid transparent;
+        }
+
+        .typora-export .outline-expander::before {
+            content: "+";
+            font-family: inherit;
+            top: -1px;
+        }
+
+        .typora-export .outline-expander:hover::before,
+        .typora-export .outline-item-open>.outline-item>.outline-expander::before {
+            content: "−";
+        }
+
+        .typora-export-collapse-outline .outline-children {
+            display: none;
+        }
+
+        .typora-export-collapse-outline .outline-item-open>.outline-children,
+        .typora-export-no-collapse-outline .outline-children {
+            display: block;
+        }
+
+        .typora-export-no-collapse-outline .outline-expander::before {
+            content: "" !important;
+        }
+
+        .typora-export-show-outline .outline-item-active>.outline-item .outline-label {
+            font-weight: 700;
+        }
+
+        .md-inline-math-container mjx-container {
+            zoom: 0.95;
+        }
+
+
+        :root {
+            --side-bar-bg-color: #fafafa;
+            --control-text-color: #777;
+        }
+
+        @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+        /* open-sans-regular - latin-ext_latin */
+        /* open-sans-italic - latin-ext_latin */
+        /* open-sans-700 - latin-ext_latin */
+        /* open-sans-700italic - latin-ext_latin */
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        #write {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-bottom: 100px;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            #write {
+                max-width: 1024px;
+            }
+        }
+
+        @media only screen and (min-width: 1800px) {
+            #write {
+                max-width: 1200px;
+            }
+        }
+
+        #write>ul:first-child,
+        #write>ol:first-child {
+            margin-top: 30px;
+        }
+
+        a {
+            color: #4183C4;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            position: relative;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+            cursor: text;
+        }
+
+        h1:hover a.anchor,
+        h2:hover a.anchor,
+        h3:hover a.anchor,
+        h4:hover a.anchor,
+        h5:hover a.anchor,
+        h6:hover a.anchor {
+            text-decoration: none;
+        }
+
+        h1 tt,
+        h1 code {
+            font-size: inherit;
+        }
+
+        h2 tt,
+        h2 code {
+            font-size: inherit;
+        }
+
+        h3 tt,
+        h3 code {
+            font-size: inherit;
+        }
+
+        h4 tt,
+        h4 code {
+            font-size: inherit;
+        }
+
+        h5 tt,
+        h5 code {
+            font-size: inherit;
+        }
+
+        h6 tt,
+        h6 code {
+            font-size: inherit;
+        }
+
+        h1 {
+            font-size: 2.25em;
+            line-height: 1.2;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            font-size: 1.75em;
+            line-height: 1.225;
+            border-bottom: 1px solid #eee;
+        }
+
+        /*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+        h3 {
+            font-size: 1.5em;
+            line-height: 1.43;
+        }
+
+        h4 {
+            font-size: 1.25em;
+        }
+
+        h5 {
+            font-size: 1em;
+        }
+
+        h6 {
+            font-size: 1em;
+            color: #777;
+        }
+
+        p,
+        blockquote,
+        ul,
+        ol,
+        dl,
+        table {
+            margin: 0.8em 0;
+        }
+
+        li>ol,
+        li>ul {
+            margin: 0 0;
+        }
+
+        hr {
+            height: 2px;
+            padding: 0;
+            margin: 16px 0;
+            background-color: #e7e7e7;
+            border: 0 none;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+
+        li p.first {
+            display: inline-block;
+        }
+
+        ul,
+        ol {
+            padding-left: 30px;
+        }
+
+        ul:first-child,
+        ol:first-child {
+            margin-top: 0;
+        }
+
+        ul:last-child,
+        ol:last-child {
+            margin-bottom: 0;
+        }
+
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding: 0 15px;
+            color: #777777;
+        }
+
+        blockquote blockquote {
+            padding-right: 0;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table th:first-child,
+        table td:first-child {
+            margin-top: 0;
+        }
+
+        table th:last-child,
+        table td:last-child {
+            margin-bottom: 0;
+        }
+
+        .CodeMirror-lines {
+            padding-left: 4px;
+        }
+
+        .code-tooltip {
+            box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+            border-top: 1px solid #eef2f2;
+        }
+
+        .md-fences,
+        code,
+        tt {
+            border: 1px solid #e7eaed;
+            background-color: #f8f8f8;
+            border-radius: 3px;
+            padding: 0;
+            padding: 2px 4px 0px 4px;
+            font-size: 0.9em;
+        }
+
+        code {
+            background-color: #f3f4f4;
+            padding: 0 2px 0 2px;
+        }
+
+        .md-fences {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            padding-top: 8px;
+            padding-bottom: 6px;
+        }
+
+
+        .md-task-list-item>input {
+            margin-left: -1.3em;
+        }
+
+        @media print {
+            html {
+                font-size: 13px;
+            }
+
+            table,
+            pre {
+                page-break-inside: avoid;
+            }
+
+            pre {
+                word-wrap: break-word;
+            }
+        }
+
+        .md-fences {
+            background-color: #f8f8f8;
+        }
+
+        #write pre.md-meta-block {
+            padding: 1rem;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border: 0;
+            border-radius: 3px;
+            color: #777777;
+            margin-top: 0 !important;
+        }
+
+        .mathjax-block>.code-tooltip {
+            bottom: .375rem;
+        }
+
+        .md-mathjax-midline {
+            background: #fafafa;
+        }
+
+        #write>h3.md-focus:before {
+            left: -1.5625rem;
+            top: .375rem;
+        }
+
+        #write>h4.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h5.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h6.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        .md-image>.md-meta {
+            /*border: 1px solid #ddd;*/
+            border-radius: 3px;
+            padding: 2px 0px 0px 4px;
+            font-size: 0.9em;
+            color: inherit;
+        }
+
+        .md-tag {
+            color: #a7a7a7;
+            opacity: 1;
+        }
+
+        .md-toc {
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-tabs {
+            border-bottom: none;
+        }
+
+        #typora-quick-open {
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+        }
+
+        #typora-quick-open-item {
+            background-color: #FAFAFA;
+            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        /** focus mode */
+        .on-focus-mode blockquote {
+            border-left-color: rgba(85, 85, 85, 0.12);
+        }
+
+        header,
+        .context-menu,
+        .megamenu-content,
+        footer {
+            font-family: "Segoe UI", "Arial", sans-serif;
+        }
+
+        .file-node-content:hover .file-node-icon,
+        .file-node-content:hover .file-node-open-state {
+            visibility: visible;
+        }
+
+        .mac-seamless-mode #typora-sidebar {
+            background-color: #fafafa;
+            background-color: var(--side-bar-bg-color);
+        }
+
+        .md-lang {
+            color: #b4654d;
+        }
+
+        /*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+        #md-notification .btn {
+            border: 0;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+            opacity: 0.4;
+        }
+
+        .ty-preferences .window-content {
+            background-color: #fafafa;
+        }
+
+        .ty-preferences .nav-group-item.active {
+            color: white;
+            background: #999;
+        }
+
+        .menu-item-container a.menu-style-btn {
+            background-color: #f5f8fa;
+            background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+        }
+    </style>
+    <title>2021090916028 -刘诗月-考核-后端-03</title>
+</head>
+
+<body class='typora-export os-windows'>
+    <div class='typora-export-content'>
+        <div id='write' class=''>
+            <h1 id='nginx'><span>nginx</span></h1>
+            <h2 id='一）谈谈你对localhost和127001的理解'><span>（一）谈谈你对localhost和127.0.0.1的理解</span></h2>
+            <blockquote>
+                <p><span>localhost是我本地的域名，就是指我所在的计算机本身；127.0.0.1是默认的IP地址，每台机器的本地ip都是这个，它们俩是对应的，在hosts文件中可以看到：localhost指向的IP地址就是127.0.0.1（但这也能看出来localhost对应的地址是可以改变的），但值得强调的是：localhost
+                        等于127.0.0.1，但不等于本机 IP 地址，我后面就先犯了这个错误。</span></p>
+                <p><img src="./img/w03/03 15.png" referrerpolicy="no-referrer"></p>
+                <p><span>通过 localhost 和 127.0.0.1 都可以进行本机访问，因为后面的题我都用的localhost访问，这里再放一个用127.0.0.1的：</span>
+                    <img src="./img/w03/03 16.png" style="zoom:33%;" />
+                </p>
+                <p><span>127.0.0.1：它是回环地址，也就是说其所在的回环接口一般被理解为虚拟网卡，并不是真正的路由器接口，就是我们在主机上发送给127开头的IP地址的数据包会被发送的主机自己接收，是传不出去的，外部设备也无法通过回环地址访问到本机，所以如果想让局域网内的小伙伴访问到你的网站，还需要用你电脑真正的IP。</span>
+                </p>
+            </blockquote>
+            <p>&nbsp;</p>
+            <h2 id='二）本题截图'><span>（二）本题截图</span></h2>
+            <h3 id='part-1'><span>part 1</span></h3>
+            <h3 id='1安装nginxlinux'><span>1.安装nginx(linux)</span></h3>
+            <p><span>安装了几个依赖包，pcre后终于安好了nginx</span></p>
+            <p><img src="./img/w03/03 01.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w03/03 02.png" referrerpolicy="no-referrer"></p>
+            <h3 id='2放入html'><span>2.放入html</span></h3>
+            <p><img src="./img/w03/03 03.png" referrerpolicy="no-referrer"></p>
+            <h3 id='3部署它'><span>3.部署它</span></h3>
+            <p><img src="./img/w03/03 04.png" referrerpolicy="no-referrer"></p>
+            <p><span>然后发现乱码</span></p>
+            <p><img src="./img/w03/03 05.png" referrerpolicy="no-referrer"></p>
+            <p><span>查了一下中文乱码，发现是我没有改utf-8，修改后：</span></p>
+            <p><img src="./img/w03/03 07.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w03/03 08.png" referrerpolicy="no-referrer"></p>
+            <h3 id='4试着在其他设备上访问到'><span>4.试着在其他设备上访问到</span></h3>
+            <h4 id='同一局域网下舍友的电脑'><span>同一局域网下舍友的电脑：</span></h4>
+            <p><span>成功访问到啦！</span></p>
+            <p><img src="./img/w03/03 10.jpg" referrerpolicy="no-referrer"></p>
+            <p><span>最开始傻傻地输入了127.0.0.1，显然不行，在百度上搜索：</span></p>
+            <p><img src="./img/w03/03 11.png" referrerpolicy="no-referrer"></p>
+            <p>&nbsp;</p>
+            <p><span>才知道应该输入电脑的真实IP，于是查了一下，然后又傻傻用错了：先用成了这个192.168.171.1</span></p>
+            <p><img src="./img/w03/03 12.png" referrerpolicy="no-referrer"></p>
+            <p><span>仔细一看，发现这是以太网适配器，以太网网络是靠网线传播的，对应的是电脑上本地连接，应该用这个ip：210.41.101.221</span></p>
+            <p><img src="./img/w03/03 13.png" referrerpolicy="no-referrer"></p>
+            <h4 id='不同局域网的伙伴访问'><span>不同局域网的伙伴访问：</span></h4>
+            <p><span>用的我的手机流量，无法访问：</span></p>
+            <p><img src="./img/w03/03 14.png" style="zoom:25%;" /></p>
+            <h4 id='谈谈原因'><span>谈谈原因</span></h4>
+            <p><span>大概是因为局域网中的IP只不过是一个私有地址，是不能在公网中使用的，服务器所接网络没有分配真实动态公网IP地址。要想局域网外的小伙伴访问到的话，要有一个固定ip（外网），还要有一个域名（好像需要花钱注册吧）</span>
+            </p>
+            <p>&nbsp;</p>
+            <h3 id='part-2'><span>part 2</span></h3>
+            <h4 id='访问httpglimmeruestc看到界面'><span>访问</span><a href='http://glimmer.uestc' target='_blank'
+                    class='url'>http://glimmer.uestc</a><span>看到界面</span></h4>
+            <p><span>我真的在这里卡了很久很久很久很久。</span></p>
+            <p><span>我最开始是在虚拟机的linux系统里安装的nginx，修改完了hosts文件：</span></p>
+            <p><img src="./img/w03/03 17.png" referrerpolicy="no-referrer"></p>
+            <p><span>照理说它已经完成了本地域名映射，根据我的了解：DNS解析会获取本地的hosts文件，看它有没有域名&gt;IP的映射，如果有的话会直接使用，它其实应该就可以访问到了。但事实上我一直失败。</span>
+            </p>
+            <p><span>我最初以为是它跟我想象的不一样，然后我又看了很多资料，甚至把负载均衡也看了，发现它还是应该就是这么简单，但是我一直失败，最后我放弃了虚拟机上安装的nginx，转战windows系统，然后秒成功。</span>
+            </p>
+            <p><img src="./img/w03/03 15.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w03/03 19.png" referrerpolicy="no-referrer"></p>
+            <p><img src="./img/w03/03 18.png" referrerpolicy="no-referrer"></p>
+            <p><span>我开始仔细思考原因：</span></p>
+            <p><span>我认为可能是这样，我是在windows浏览器上访问的，所以我应该在windows下面配置才行，它对域名需要找</span><strong><span>本地</span></strong><span>的DNS解析，解析到对应的IP再去访问这个浏览器，虚拟机上的hosts自然不能算作是本地的hosts，所以需要在windows下面进行配置。（不知道是不是这个原因）</span>
+            </p>
+            <p>&nbsp;</p>
+            <h4 id='访问httprecruitglimmeruestc的时候能重定向到httpglimmerspace'>
+                <span>访问</span><code>http://recruit.glimmer.uestc</code><span>的时候，能</span><strong><span>重定向</span></strong><span>到</span><code>http://glimmer.space</code>
+            </h4>
+            <h5 id='1反向代理'><span>1.反向代理：</span></h5>
+            <p><img src="./img/w03/03 20.png" referrerpolicy="no-referrer"></p>
+            <p><span>是成功的：</span>
+                <img src="./img/w03/03 23.png" referrerpolicy="no-referrer">
+            </p>
+            <h5 id='2rewrite'><span>2.rewrite：</span></h5>
+            <p><img src="./img/w03/03 22.png" referrerpolicy="no-referrer"></p>
+            <p><span>就是重定向，找网课学了一下重定向该怎么写，就依葫芦画瓢写了一下，没遇到什么困难。</span></p>
+            <p><span>其实这里用到了正则表达式诶，但当时还不太懂，正则表达式相关详见下一part。</span></p>
+            <p><span>也是成功的：</span></p>
+            <p><img src="./img/w03/03 21.png" referrerpolicy="no-referrer"></p>
+            <p><span>发现都可以之后，去CSDN了解了一下它们的不同：</span></p>
+            <p>&nbsp;</p>
+            <h5 id='代理'><span>代理：</span></h5>
+            <h6 id='正向代理'><span>正向代理：</span></h6>
+            <p><img src="./img/w03/03 24.png" referrerpolicy="no-referrer"></p>
+            <p><span>正向代理服务器是客户端和目的服务器之间的一个中介，客户端通过正向代理服务器访问客户端原本无法访问的目标服务器，它是用户使用的技术。用户首先是知道自己要访问的目标服务器是谁，但由于某种原因无法直接访问该目标服务器，因此选择使用正向代理服务器帮忙转发请求</span>
+            </p>
+            <h6 id='反向代理'><span>反向代理：</span></h6>
+            <p><img src="./img/w03/03 25.png" referrerpolicy="no-referrer"></p>
+            <p><span>客户端向一个服务器A提交请求后，服务器A偷偷地去服务器B上获取资源，并返回给客户端，它是服务器使用的技术。用户向服务器发送请求后，服务器在用户不知情的情况下去其他服务器上获取资源并返回给用户。</span>
+            </p>
+            <p>&nbsp;</p>
+            <h5 id='重定向'><span>重定向：</span></h5>
+            <p><span>客户端向服务器请求资源A，服务器发现A在其他地方，于是返回301 Move Permanently给客户端，告诉客户端该资源被永久移动到位置B，然后客户端重新请求资源B得到想要的结果。</span>
+            </p>
+            <p>&nbsp;</p>
+            <p><span>然后我很好奇，既然都可以成功，那什么时候用哪个呢：查了一下有人这样回答：</span>
+                <span>1.转发的速度快；重定向速度慢</span>
+                <span>2.转发的是同一次请求；重定向是两次不同请求</span>
+                <span>3.转发地址栏没有变化；重定向地址栏有变化</span>
+                <span>4.转发必须是在同一台服务器下完成；重定向可以在不同的服务器下完成</span>
+            </p>
+            <p><span>验证了一下第4点，发现是真的</span></p>
+            <p><span>用舍友的电脑试了一下，重定向时是这样的：</span></p>
+            <p><img src="./img/w03/03 26.jpg" referrerpolicy="no-referrer"></p>
+            <p><span>反向代理就是这样的：失败了</span></p>
+            <p><img src="./img/w03/03 27.jpg" referrerpolicy="no-referrer"></p>
+            <p>&nbsp;</p>
+            <h3 id='part-3'><span>part 3</span></h3>
+            <h4 id='写正则表达式'><span>写正则表达式：</span></h4>
+            <p><span>我在写正则表达式的时候是这样试的：（下图为最终正则表达式）</span></p>
+            <p><img src="./img/w03/03 30.png" referrerpolicy="no-referrer"></p>
+            <p><span>给一个重定向</span></p>
+            <p><span>如果满足要求就是这样：</span></p>
+            <p><img src="./img/w03/03 29.png" referrerpolicy="no-referrer"></p>
+            <p><span>如果不满足要求就是404：</span></p>
+            <p><img src="./img/w03/03 28.png" referrerpolicy="no-referrer"></p>
+            <p><span>过程：</span></p>
+            <p><span>真的错了很多次，，，，错的次数太多，没有截图，只有截个这个感受一下，，，</span></p>
+            <p><img src="./img/w03/03 31.png" referrerpolicy="no-referrer"></p>
+            <p><span>在B站听了10分钟的正则表达式后，我就开始上手了，</span></p>
+            <p><img src="./img/w03/03 32.jpg" style="zoom:33%;" /></p>
+            <p><span>（顺便贴一个正则表达式的小笔记）：</span></p>
+            <h5 id='正则表达式'><span>正则表达式</span></h5>
+            <h6 id='限定符对象为一个字符'><span>限定符：对象为一个字符</span></h6>
+            <blockquote>
+                <p><span>？它前面的字符需要出现0次或1次</span></p>
+                <blockquote>
+                    <p><span>eg. d? 即d 这个字符可有可无</span></p>
+                </blockquote>
+                <p><span>*会匹配0个或多个字符</span></p>
+                <blockquote>
+                    <p><span>eg. ab*c，即ac中可以有0个或多个b</span></p>
+                </blockquote>
+                <p><span>+匹配出现一次以上的字符</span></p>
+                <blockquote>
+                    <p><span>eg. ab+c，即ac中可以出现1次或多次b</span></p>
+                </blockquote>
+                <p><span>{}可指定次数</span></p>
+                <blockquote>
+                    <p><span>eg.ab{6}c，即ac中有6个b</span></p>
+                    <p><span>ab{2,6}c，ac中出现2-6个b</span></p>
+                    <p><span>ab{2,}c，ac中出现2次以上的b</span></p>
+                </blockquote>
+            </blockquote>
+            <p><span>若需要多个字符，用（）</span></p>
+            <p><span>或字符 |，eg.(cat|dog)</span></p>
+            <p>&nbsp;</p>
+            <h6 id='字符类'><span>字符类</span></h6>
+            <blockquote>
+                <p><span>[]：要求匹配的字符只能取自于括号内</span></p>
+                <blockquote>
+                    <p><span>eg. [abc]</span></p>
+                    <p><span>[a-z] [A-Z] [0-9]</span></p>
+                    <p><span>[^ ] ^代表匹配^后面列出的以外的字符</span></p>
+                </blockquote>
+            </blockquote>
+            <p>&nbsp;</p>
+            <h6 id='元字符'><span>元字符</span></h6>
+            <blockquote>
+                <p><span>\d：数字字符（大写代表非数字字符）</span></p>
+                <p><span>\w：单词字符（大写代表非数字字符）</span></p>
+                <p><span>\s ：空白符（大写代表非数字字符）</span></p>
+                <p><span>.代表任意字符，但不包含换行符</span></p>
+                <p><span>^ 匹配行首，$匹配行尾</span></p>
+            </blockquote>
+            <h6 id='高级概念'><span>高级概念</span></h6>
+            <blockquote>
+                <p><span>*+{}匹配时会尽可能匹配多的字符</span></p>
+            </blockquote>
+            <hr />
+            <p><span>于是，我先写出了(end|final)$作结尾，然后写了~放开头来区分大小写，写出了 ~^/home/作开头</span></p>
+            <p><span>最开始中间那一坨写成了.*?，后来发现根本没有加？的必要</span></p>
+            <p><span>然后又写成了~^/home.*(final|end)$,一直不对，调了一下，加了一个/，</span></p>
+            <p><span>最终就成为了~^/home/.*(final|end)$，应该就对了吧</span></p>
+            <p>&nbsp;</p>
+            <h4 id='返回完整请求uri'><span>返回完整请求uri</span></h4>
+            <p><span>这个一开始是懵的，这个题好像既不是重定向，也不是代理，问了一个初中生网友，告诉我或许可以重定向到一个html上，使那个html显示跳转来源，但我现在还没有探索出来.....</span></p>
+            <p><span>然后我有两个思路，一种是打印日志，一种是echo显示（或许也算打印日志？）</span></p>
+            <p><span>因为听说windows上的nginx无法安装上echo模块，windows系统代码不是开源的，nginx没有办法动态链接模块，因此nginx提供的二进制文件和其中包含的模块的使用是受限制的。</span>
+            </p>
+            <p><span>于是我又回到了我虚拟机的nginx</span></p>
+            <h5 id='安装echo模块'><span>安装echo模块</span></h5>
+            <p><img src="./img/w03/03 33.png" referrerpolicy="no-referrer"></p>
+            <p><span>本来按照博客上的教程去wget，结果又因为无法连接到github而失败，想说句题外话，我的电脑真的10次连github仓库，9次都失败，真的很难受。</span></p>
+            <p><span>最后自己去网站上找了压缩包，传输给虚拟机解压了，最终安装好了echo模块。</span></p>
+            <h5 id='一些尝试'><span>一些尝试</span></h5>
+            <p><span>阅读了很多博客，觉得这道题和nginx的内置变量最相关。</span></p>
+            <p><span>一直没有找到最适合的变量，分别试了一下各种变量。</span></p>
+            <p><img src="./img/w03/03 34.png" referrerpolicy="no-referrer"></p>
+            <p><span>（补充一下，uri应该可以简单地理解为域名后面跟的东西吧，比如说80端口呀，或者/a这种）</span></p>
+            <p><span>突然有一刻，我想把它们连在一起试一试</span></p>
+            <p><img src="./img/w03/03 35.png" referrerpolicy="no-referrer"></p>
+            <p><span>然后发现居然真的还可以这样。</span></p>
+            <p><span>然后我就写出了我的最终答案：</span></p>
+            <p><img src="./img/w03/03 36.png" referrerpolicy="no-referrer"></p>
+            <p><span>但是不知道是不是我的echo装得有问题还是什么原因，我看别人的echo都可以直接打印出来，但我是这样的？</span></p>
+            <p><img src="./img/w03/03 37.png" referrerpolicy="no-referrer"></p>
+            <p><span>它将应该打印出来的东西变成了下面下载的那个final(8)......</span></p>
+            <p><span>打开final(8)是这样：</span></p>
+            <p><img src="./img/w03/03 38.png" referrerpolicy="no-referrer"></p>
+            <p>&nbsp;</p>
+            <p><span>如果输入uri不符合要求：</span>
+                <img src="./img/w03/03 39.png" referrerpolicy="no-referrer">
+            </p>
+            <p>&nbsp;</p>
+            <p><span>遇到的一些坑点和解决过程都在分别的每个小标题下，就不再赘述啦</span></p>
+        </div>
+    </div>
+</body>
+
+</html>
