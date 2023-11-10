@@ -7,4 +7,4 @@
 
 入口是 index.html
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Bri1987&hide=cmake,html)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Bri1987&hide=cmake&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
