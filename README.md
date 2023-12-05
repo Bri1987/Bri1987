@@ -1,5 +1,5 @@
 # Hi there 👋, I'm Bri1987.
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=410&size=30&pause=1000&color=007EF7&random=false&width=500&height=80&lines=Smells+like+teen+spirits.;%E2%80%94%E2%80%94Nirvana+%5BNevermind%5D)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=410&size=30&pause=1000&color=007EF7&random=false&width=500&height=80&lines=Smells+like+teen+spirit.;%E2%80%94%E2%80%94Nirvana+%5BNevermind%5D)](https://git.io/typing-svg)
 
 
 目前大三在读，Love chess and music.
