@@ -11,7 +11,7 @@
 </p>
 
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Bri1987&layout=compact&theme=cobalt&hide=css,html)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Bri1987&layout=compact&theme=cobalt&hide=css,html,CMake)
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Bri1987&show_icons=true&theme=cobalt&hide=contribs,prs)
 
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Bri1987&theme=vue)](https://github.com/ashutosh00710/github-readme-activity-graph)
