@@ -15,3 +15,5 @@
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Bri1987&show_icons=true&theme=cobalt&hide=contribs,prs)
 
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Bri1987&theme=vue)](https://github.com/ashutosh00710/github-readme-activity-graph)
+
+![GitHub仓库信息卡片](https://github-stats.ubrong.com/api/pin/?username=Bri1987&repo=BriLd&theme=cobalt) 
