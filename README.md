@@ -2,7 +2,7 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=410&size=30&pause=1000&color=007EF7&random=false&width=500&height=80&lines=Smells+like+teen+spirit.;%E2%80%94%E2%80%94Nirvana+%5BNevermind%5D)](https://git.io/typing-svg)
 
 
-目前大三在读，Love chess and music.
+> 🐧 目前大三在读，Love chess and music.
 
 玩过前后端和编译，希望以后能在PL上做出贡献。
 
@@ -15,5 +15,3 @@
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Bri1987&show_icons=true&theme=cobalt&hide=contribs,prs)
 
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Bri1987&theme=vue)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
-![GitHub仓库信息卡片](https://github-stats.ubrong.com/api/pin/?username=Bri1987&repo=BriLd&theme=cobalt) 
