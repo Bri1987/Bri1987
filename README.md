@@ -10,4 +10,4 @@
 
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Bri1987&layout=compact&theme=cobalt&hide=css,html,CMake)
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Bri1987&show_icons=true&theme=cobalt&hide=contribs,prs)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Bri1987&show_icons=true&theme=cobalt&hide=contribs,prs,issues)
