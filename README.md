@@ -5,7 +5,7 @@
 > 🐧 目前大三在读，Love chess and music.
 
 <p>
-<a href="http://bri1987.com:8090/"><img src="https://img.shields.io/static/v1?label=Blog&message=MyBlog&color=blue"/></a>
+<a href="http://62.234.153.251/"><img src="https://img.shields.io/static/v1?label=Blog&message=MyBlog&color=blue"/></a>
 </p>
 
 
