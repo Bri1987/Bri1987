@@ -2,7 +2,7 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=410&size=30&pause=1000&color=007EF7&random=false&width=500&height=80&lines=Smells+like+teen+spirit.;%E2%80%94%E2%80%94Nirvana+%5BNevermind%5D)](https://git.io/typing-svg)
 
 
-> 🐧 目前大三在读，Love chess and music.
+> 🐧 目前大四在读，Love chess and music.
 
 <p>
 <a href="http://62.234.153.251/"><img src="https://img.shields.io/static/v1?label=Blog&message=MyBlog&color=blue"/></a>
